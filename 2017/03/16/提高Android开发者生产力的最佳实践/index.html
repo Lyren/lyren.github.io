@@ -10,7 +10,7 @@
     
     <title>
         
-            提高Android开发者生产力的最佳实践 | 
+            提高Android开发者生产力的最佳实践[译] | 
         
         Hexo
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="提高Android开发者生产力的最佳实践 | Hexo">
+    <meta property="og:title" content="提高Android开发者生产力的最佳实践[译] | Hexo">
     <meta property="og:description" content="To be a coder.">
     <meta property="og:article:tag" content="Android App Development"> <meta property="og:article:tag" content="AndroidDev"> <meta property="og:article:tag" content="Android Studio"> <meta property="og:article:tag" content="Gradle"> <meta property="og:article:tag" content="Developer Productivity"> 
 
@@ -229,7 +229,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-What-does-your-AndroidManifest-really-look-like"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 What does your AndroidManifest really look like?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Support-annotations-are-your-friends"><span class="post-toc-number">2.</span> <span class="post-toc-text">2  Support annotations are your friends</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Fast-and-Painless-code-review"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 Fast and Painless code review</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-Apply-changes-fast"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 Apply changes fast</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-Measure-execution-time"><span class="post-toc-number">5.</span> <span class="post-toc-text">5 Measure execution time</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-How-to-read-logcat-output-from-your-device"><span class="post-toc-number">6.</span> <span class="post-toc-text">6 How to read logcat output from your device</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-Network-output-logging-and-analyzing"><span class="post-toc-number">7.</span> <span class="post-toc-text">7 Network output logging and analyzing</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-Keep-testing-on-various-OS-versions"><span class="post-toc-number">8.</span> <span class="post-toc-text">8 Keep testing on various OS versions</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-Automate-screen-interaction"><span class="post-toc-number">9.</span> <span class="post-toc-text">9 Automate screen interaction</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-What-does-your-AndroidManifest-really-look-like"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 What does your AndroidManifest really look like?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Support-annotations-are-your-friends"><span class="post-toc-number">2.</span> <span class="post-toc-text">2  Support annotations are your friends</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Fast-and-Painless-code-review"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 Fast and Painless code review</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-Apply-changes-fast"><span class="post-toc-number">4.</span> <span class="post-toc-text">4 Apply changes fast</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-Measure-execution-time"><span class="post-toc-number">5.</span> <span class="post-toc-text">5 Measure execution time</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-How-to-read-logcat-output-from-your-device"><span class="post-toc-number">6.</span> <span class="post-toc-text">6 How to read logcat output from your device</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-Network-output-logging-and-analyzing"><span class="post-toc-number">7.</span> <span class="post-toc-text">7 Network output logging and analyzing</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-Keep-testing-on-various-OS-versions"><span class="post-toc-number">8.</span> <span class="post-toc-text">8 Keep testing on various OS versions</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-Automate-screen-interaction"><span class="post-toc-number">9.</span> <span class="post-toc-text">9 Automate screen interaction</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-Check-your-build-gradle-configuration"><span class="post-toc-number">10.</span> <span class="post-toc-text">10 Check your build.gradle configuration</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -265,7 +265,7 @@
         
     
             <p class="article-headline-p">
-                提高Android开发者生产力的最佳实践
+                提高Android开发者生产力的最佳实践[译]
             </p>
         </div>
 
@@ -331,7 +331,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/03/16/提高Android开发者生产力的最佳实践/" class="leancloud-views_num" data-flag-title="提高Android开发者生产力的最佳实践">
+                <span id="/2017/03/16/提高Android开发者生产力的最佳实践/" class="leancloud-views_num" data-flag-title="提高Android开发者生产力的最佳实践[译]">
      &nbsp;浏览量
 </span>
 
@@ -354,7 +354,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=提高Android开发者生产力的最佳实践&url=http://yoursite.com//2017/03/16/提高Android开发者生产力的最佳实践/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=提高Android开发者生产力的最佳实践[译]&url=http://yoursite.com//2017/03/16/提高Android开发者生产力的最佳实践/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -363,7 +363,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=提高Android开发者生产力的最佳实践&url=http://yoursite.com//2017/03/16/提高Android开发者生产力的最佳实践/index.html&via=李凯琪" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=提高Android开发者生产力的最佳实践[译]&url=http://yoursite.com//2017/03/16/提高Android开发者生产力的最佳实践/index.html&via=李凯琪" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -409,7 +409,7 @@
 <p>我最近在 <a href="http://droidcon.de/en/sessions/effective-android-development" target="_blank" rel="external">Droidcon Berlin</a> 发表了一个我们在 Zalando 技术团队中使用的提高 Android 开发者生产力最佳实践的演讲。下面你可以从我的谈话找到关键点，这将使你的开发者生活更加愉快，你的应用程序更稳定。</p>
 <p><img src="https://cdn-images-1.medium.com/max/800/1*e7X-rfqUmez-yI_DdsyOCw.jpeg" alt=""></p>
 <h3 id="1-What-does-your-AndroidManifest-really-look-like"><a href="#1-What-does-your-AndroidManifest-really-look-like" class="headerlink" title="1 What does your AndroidManifest really look like?"></a>1 What does your AndroidManifest really look like?</h3><p>我们都知道在编辑器里看到的 AndroidManifest.xml 文件往往与真正打包进应用的不一样。它的发生主要是因为你的项目中包含的库可能含有额外的<uses-permission>元素，这将与你的清单文件中请求的权限混合(详细请看 <a href="https://commonsware.com/blog/2015/06/25/hey-where-did-these-permissions-come-from.html" target="_blank" rel="external">The Commons Blog</a>)。  </uses-permission></p>
-<p>我们可以通过使用 Android Studio 2.2提供的新特性(<a href="http://android-developers.blogspot.de/2016/05/android-studio-22-preview-new-ui.html" target="_blank" rel="external">Merged Manifest Viewer</a>)，来在构建 APK 之前对 manifest 文件进行检查。这个工具会展示你的 AndroidManifest 和基于 build type,flavors 和 variants 的项目依赖的 manifest 合并之后的结果。你可以打开你的 AndroidManifest 文件然后点击下方的 <strong>Merged Manifest</strong> 标签来使用这个工具。</p>
+<p>我们可以通过使用 Android Studio 2.2 提供的新特性(<a href="http://android-developers.blogspot.de/2016/05/android-studio-22-preview-new-ui.html" target="_blank" rel="external">Merged Manifest Viewer</a>)，来在构建 APK 之前对 manifest 文件进行检查。这个工具会展示你的 AndroidManifest 和基于 build type,flavors 和 variants 的项目依赖的 manifest 合并之后的结果。你可以打开你的 AndroidManifest 文件然后点击下方的 <strong>Merged Manifest</strong> 标签来使用这个工具。</p>
 <p><img src="https://cdn-images-1.medium.com/max/800/0*wZiAP9ouYyAaY-_x.png" alt=""></p>
 <h3 id="2-Support-annotations-are-your-friends"><a href="#2-Support-annotations-are-your-friends" class="headerlink" title="2  Support annotations are your friends"></a>2  Support annotations are your friends</h3><p>另外一个非常有用的工具是 support annotations 库。你可以通过在 build.gradle 文件中添加  <code>com.android.supports:support-annotations:23.4.0</code> 来在项目中引入它。使用这些元注解去修饰你的代码能够帮助你捕获 Bug，也有助于定义编码规则。它们最普遍的用例是：标识 nullable 和 non-nullable,标识 int 作为 resource id ,指定被修饰代码的调用线程。  </p>
 <p>由于这些注解是元注解，即使你违反了它们定义的规则你的项目也能编译通过。然而，违反规则的地方会被 Android Studio 和 Lint 高亮,这就意味着团队的其他成员会看到这些，而且在 CI 工具的输出中也能看到。</p>
@@ -423,7 +423,7 @@
 <li>重复 1-5 的操作回到你的工作中去  </li>
 </ol>
 <p>你可能会说: “What’s the problem with it?” 。是的，这一切都很好。但是在你的项目有1000多个类而且有不同的构建配置时，即使是在高配的 Macbook 上,你可能花费3分钟甚至更多的时间去等待编译。  </p>
-<p>我们的解决方案是使用专用 IDE 实例和库文件夹进行代码审查。在这种情况下，你的工作不会被打断，而且你可以轻易地回到你的工作分支去。小小的免责声明:推荐使用内存 &gt;16G的机器，它能帮你节约的时间绝对是值得的。</p>
+<p>我们的解决方案是使用专用 IDE 实例和库文件夹进行代码审查。在这种情况下，你的工作不会被打断，而且你可以轻易地回到你的工作分支去。小小的免责声明:推荐使用内存 &gt;16G 的机器，它能帮你节约的时间绝对是值得的。</p>
 <h3 id="4-Apply-changes-fast"><a href="#4-Apply-changes-fast" class="headerlink" title="4 Apply changes fast"></a>4 Apply changes fast</h3><p>即便是在小型的 Android 项目中，你都可能花费一部分时间去构建你最新的代码然后部署到测试机器或者虚拟机中。如果你有好几个类文件和布局文件的话，即使是在一个高配置的机器上，每一次的重新构建和重新部署都会花费你许多时间。而且你可能需要人工地进入你修改的页面，这也是很影响效率的。</p>
 <p>在2015年末，Android 社区得到了两个能够让改变的代码更快被应用的工具。第一个是 JRebel,它来自 Java 后端，并且已经成为行业标准有很长一段时间。另一个工具是 Google 团队跟 Android Studio 2.0 一起发布的 <a href="https://developer.android.com/studio/run/index.html#instant-run" target="_blank" rel="external">Instant Run</a>。这两个工具有着相通的目标，但是 JRebel 有更多的共能并且是付费的。</p>
 <p>我还没有发现这两个工具的独立比较，因此我根据他们的文档和博客声明分析并得出了一下表格。目前，它们中最常见的用例是改变资源和方法逻辑，而无需结构变化，如接口或 manifest 文件。</p>
@@ -433,19 +433,19 @@
 <p>这些工具都还在活跃地开发中并且几乎每周都回发布更新。根据我们的经验，它们仍然还有很多的用例没有覆盖到，但是如果你知道这些工具的用途，你就可以从这些工具中受益。</p>
 <h3 id="5-Measure-execution-time"><a href="#5-Measure-execution-time" class="headerlink" title="5 Measure execution time"></a>5 Measure execution time</h3><p>在应用调试和性能分析中另一个非常有用的功能是纪录方法的输入/输出和执行时间。对于这些需求，我们使用了一个简单而优雅的方法注释工具——Jake Wharton 的 <a href="https://github.com/JakeWharton/hugo" target="_blank" rel="external">Hugo</a> 。如果你只是想看日志而不想用像 Systrace 这样深刻而复杂的工具,它就像一个充满魅力的作品。</p>
 <p>所有你需要做的只是注释目标方法,如图所示：</p>
-<pre class=" language-Java"><code class="language-Java">@DebugLog
-public String getName(String first, String last) {/* ... */}
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@DebugLog</span>
+<span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span>String first<span class="token punctuation">,</span> String last<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">/* ... */</span><span class="token punctuation">}</span>
 </code></pre>
 <p>并在日志中找到有关方法调用的相应信息：</p>
-<pre class=" language-Java"><code class="language-Java">V/Example: --> getName(first="Jake", last="Wharton")
-V/Example: <-- getName [16ms] = "Jake Wharton"
+<pre class=" language-java"><code class="language-java">V<span class="token operator">/</span>Example<span class="token operator">:</span> <span class="token operator">--</span><span class="token operator">></span> <span class="token function">getName</span><span class="token punctuation">(</span>first<span class="token operator">=</span><span class="token string">"Jake"</span><span class="token punctuation">,</span> last<span class="token operator">=</span><span class="token string">"Wharton"</span><span class="token punctuation">)</span>
+V<span class="token operator">/</span>Example<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">--</span> getName <span class="token punctuation">[</span>16ms<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Jake Wharton"</span>
 </code></pre>
-<h3 id="6-How-to-read-logcat-output-from-your-device"><a href="#6-How-to-read-logcat-output-from-your-device" class="headerlink" title="6 How to read logcat output from your device"></a>6 How to read logcat output from your device</h3><p>对于日常需要，我们大部分人都使用 Android Studio 中的 Monitor来看日志。但是，它只适用于简单的情况，我们必须得注意到这种方法的几个权衡点:</p>
+<h3 id="6-How-to-read-logcat-output-from-your-device"><a href="#6-How-to-read-logcat-output-from-your-device" class="headerlink" title="6 How to read logcat output from your device"></a>6 How to read logcat output from your device</h3><p>对于日常需要，我们大部分人都使用 Android Studio 中的 Monitor 来看日志。但是，它只适用于简单的情况，我们必须得注意到这种方法的几个权衡点:</p>
 <ul>
 <li>日志读起来很不友好，你可能需要使用外部工具或者命令进行格式化</li>
 <li>Android Studio 的日志工具连接到已经部署的应用程序的进程ID。如果你重新部署应用或者杀死进程的话，由于它是关联到进程ID的，之前的日志就会丢失。</li>
 </ul>
-<p>作为解决这个问题的方法，我们可以使用 Jake Wharton 的另一个工具——<a href="https://github.com/JakeWharton/pidcat" target="_blank" rel="external">pidcat</a>。它的主要优点是:</p>
+<p>作为解决这个问题的方法，我们可以使用 Jake Wharton 的另一个工具 —— <a href="https://github.com/JakeWharton/pidcat" target="_blank" rel="external">pidcat</a>。它的主要优点是:</p>
 <ul>
 <li>良好的配色和格式</li>
 <li>通过包名而不是进程ID连接调试的应用程序。重新部署应用后,之前的日志仍然会保留。</li>
@@ -456,17 +456,28 @@ V/Example: <-- getName [16ms] = "Jake Wharton"
 <li>如果的应用中有一些外部库需要使用网络的话，你可能需要对这些库进行额外的配置更改，以强制记录所有数据。</li>
 <li>在QA阶段就不能够获取控制台的输出和具体的配置，因此你将没有办法在生产环境发布的应用中使用这样的方法来监控流量。</li>
 </ul>
-<p>这是其它一些方法:使用像<a href="https://www.charlesproxy.com/" target="_blank" rel="external">Charles Proxy</a>这样的Http监控和代理工具。这些工具可以提供一下功能，包装你的应用作为一个黑盒:</p>
+<p>这是其它一些方法:使用像 <a href="https://www.charlesproxy.com/" target="_blank" rel="external">Charles Proxy</a> 这样的 Http 监控和代理工具。这些工具可以提供一下功能，包装你的应用作为一个黑盒:</p>
 <ul>
 <li>Http/Https 流量监控和纪录</li>
 <li>重写数据并且覆盖服务端响应的边缘值</li>
 <li>在网络调用中设置断点</li>
 <li>通过在设备中安装 SSL 证书读取加密流量</li>
 </ul>
-<p>更新。Nahuel Barrios 在评论中提到，使用 Facebook 的 Stetho 也可以监控网络流量。它不允许你读取生产环境的流量，但是对于常规的日常开发可能是一个很好的解决方案。我还没有发现从谷歌Analytics使用 Stetho 读取 SSL 加密流量的方式，如果你知道些什么,请给我留言。</p>
-<h3 id="8-Keep-testing-on-various-OS-versions"><a href="#8-Keep-testing-on-various-OS-versions" class="headerlink" title="8 Keep testing on various OS versions"></a>8 Keep testing on various OS versions</h3><p>有一件事我自己一直在做，并且也推动我的同事做:在开发中对于每一个功能的测试都需覆盖到 Lollipop 或者更高的版本以及 Lollipop 版本之前的设备或者模拟器。这听起来可能像一个队长平淡无奇的提示，但是我在开发中经常捕获这些错误。</p>
-<p>通过这种方式你能发现的最常见的bug是触摸反馈和系统颜色问题。我们经常看到由于老API的兼容问题导致的App崩溃。</p>
-<h3 id="9-Automate-screen-interaction"><a href="#9-Automate-screen-interaction" class="headerlink" title="9 Automate screen interaction"></a>9 Automate screen interaction</h3><p><a href="https://medium.com/@sergii/best-practices-for-android-developer-productivity-cfd6ffba804c#.lgs95jbe9" target="_blank" rel="external">https://medium.com/@sergii/best-practices-for-android-developer-productivity-cfd6ffba804c#.lgs95jbe9</a></p>
+<p>更新。Nahuel Barrios 在评论中提到，使用 Facebook 的 Stetho 也可以监控网络流量。它不允许你读取生产环境的流量，但是对于常规的日常开发可能是一个很好的解决方案。我还没有发现从谷歌 Analytics 使用 Stetho 读取 SSL 加密流量的方式，如果你知道些什么,请给我留言。</p>
+<h3 id="8-Keep-testing-on-various-OS-versions"><a href="#8-Keep-testing-on-various-OS-versions" class="headerlink" title="8 Keep testing on various OS versions"></a>8 Keep testing on various OS versions</h3><p>有一件事我自己一直在做，并且也推动我的同事做:在开发中对于每一个功能的测试都需覆盖到 Lollipop 或者更高的版本以及 Lollipop 版本之前的设备或者模拟器。这听起来可能像一个上行下效的指示，但是我在开发中经常捕获这些错误。</p>
+<p>通过这种方式你能发现的最常见的 Bug 是触摸反馈和系统颜色问题。我们经常看到由于老 API 的兼容性导致的 App 崩溃。</p>
+<h3 id="9-Automate-screen-interaction"><a href="#9-Automate-screen-interaction" class="headerlink" title="9 Automate screen interaction"></a>9 Automate screen interaction</h3><p>我们通常需要在不同的设备上面进行 UI 界面的点击和输入来检查页面是否存在兼容性问题。如果你有三四台设备要进行测试，并走查多达三十个场景，那这个测试将是令人崩溃的。</p>
+<p>自动化测试的第一步是通过输入 adb 命令或者通过完整的脚本来代替手工点击测试。例如，adb 命令行中输入 keyevent 4 将会触发设备上面一个按钮的 UP 事件。通过这种方式可以模拟系统的点击，键盘的输入和屏幕的触摸事件。</p>
+<p>那么如果你有多台设备要测试相同的场景呢？我们可以使用 Roman Nurik 开发的 <a href="https://github.com/romannurik/env/blob/master/bin/ninja-adb" target="_blank" rel="external">adb-ninja</a> 脚本来同时提交命令到不同的设备上面。它是一个很小的 shell 脚本，支持同时发送输入的 adb 命令到连接的不同设备上面，从而节省很多时间。</p>
+<h3 id="10-Check-your-build-gradle-configuration"><a href="#10-Check-your-build-gradle-configuration" class="headerlink" title="10 Check your build.gradle configuration"></a>10 Check your build.gradle configuration</h3><ul>
+<li>即使是资深的开发者有时也会遵循过时的 gralde 配置。让我们来检查一下你的 build.gradle 文件：</li>
+<li>使用 jcenter 而不是 mavenCentral 作为依赖的托管仓库，jcenter 有更快的响应速度而且是 mavenCentral 的超集</li>
+<li>检查 gradle 的 Android Plugin 版本号，最新的版本能够提高构建的性能，同时包含更多的特性，例如 Instant Run</li>
+<li>在指定函数库依赖的版本号时，不要指定一个版本范围，而是要指定明确的版本号，例如 23.4.0，这样在版本升级后如果出现 API 不兼容时不会导致项目编译失败。同时指定明确的版本号，也可以避免在每次构建时都去 jcenter 上面检查是否存在最新的版本。</li>
+<li>在开发阶段，使用构建 flavors 来设置 minSdkVersion 为 21 或者更高版本，这有助于实现更快的构建。</li>
+</ul>
+<p>上面就是我在 <a href="http://droidcon.de/en/sessions/effective-android-development" target="_blank" rel="external">Droidcon Berlin 2016</a> 上面的分享的一些关键点，完整的演讲 PPT 发表在 <a href="https://speakerdeck.com/sergiiz/effective-android-development/" target="_blank" rel="external">Speakerdeck</a> 上面。</p>
+<p><a href="https://medium.com/@sergii/best-practices-for-android-developer-productivity-cfd6ffba804c#.lgs95jbe9" target="_blank" rel="external">https://medium.com/@sergii/best-practices-for-android-developer-productivity-cfd6ffba804c#.lgs95jbe9</a></p>
 <p>Make your build.gradle great again<br><a href="https://medium.com/@sergii/make-your-build-gradle-great-again-c84cc172a654#.p7j09wyl3" target="_blank" rel="external">https://medium.com/@sergii/make-your-build-gradle-great-again-c84cc172a654#.p7j09wyl3</a></p>
 
     
