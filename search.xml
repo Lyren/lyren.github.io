@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[提高Android开发者生产力的最佳实践]]></title>
+      <url>http://yoursite.com/2017/03/16/%E6%8F%90%E9%AB%98Android%E5%BC%80%E5%8F%91%E8%80%85%E7%94%9F%E4%BA%A7%E5%8A%9B%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</url>
+      <content type="html"><![CDATA[<p>软件开发工作的效率不仅取决于你的知识和经验，而且还取决于正确的环境配置、工具，以及团队协作。  </p>
+<p>我最近在 <a href="http://droidcon.de/en/sessions/effective-android-development" target="_blank" rel="external">Droidcon Berlin</a> 发表了一个我们在 Zalando 技术团队中使用的提高 Android 开发者生产力最佳实践的演讲。下面你可以从我的谈话找到关键点，这将使你的开发者生活更加愉快，你的应用程序更稳定。</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*e7X-rfqUmez-yI_DdsyOCw.jpeg" alt=""></p>
+<h3 id="1-What-does-your-AndroidManifest-really-look-like"><a href="#1-What-does-your-AndroidManifest-really-look-like" class="headerlink" title="1 What does your AndroidManifest really look like?"></a>1 What does your AndroidManifest really look like?</h3><p>我们都知道在编辑器里看到的 AndroidManifest.xml 文件往往与真正打包进应用的不一样。它的发生主要是因为你的项目中包含的库可能含有额外的<uses-permission>元素，这将与你的清单文件中请求的权限混合(详细请看 <a href="https://commonsware.com/blog/2015/06/25/hey-where-did-these-permissions-come-from.html" target="_blank" rel="external">The Commons Blog</a>)。  </uses-permission></p>
+<p>我们可以通过使用 Android Studio 2.2提供的新特性(<a href="http://android-developers.blogspot.de/2016/05/android-studio-22-preview-new-ui.html" target="_blank" rel="external">Merged Manifest Viewer</a>)，来在构建 APK 之前对 manifest 文件进行检查。这个工具会展示你的 AndroidManifest 和基于 build type,flavors 和 variants 的项目依赖的 manifest 合并之后的结果。你可以打开你的 AndroidManifest 文件然后点击下方的 <strong>Merged Manifest</strong> 标签来使用这个工具。</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/0*wZiAP9ouYyAaY-_x.png" alt=""></p>
+<h3 id="2-Support-annotations-are-your-friends"><a href="#2-Support-annotations-are-your-friends" class="headerlink" title="2  Support annotations are your friends"></a>2  Support annotations are your friends</h3><p>另外一个非常有用的工具是 support annotations 库。你可以通过在 build.gradle 文件中添加  <code>com.android.supports:support-annotations:23.4.0</code> 来在项目中引入它。使用这些元注解去修饰你的代码能够帮助你捕获 Bug，也有助于定义编码规则。它们最普遍的用例是：标识 nullable 和 non-nullable,标识 int 作为 resource id ,指定被修饰代码的调用线程。  </p>
+<p>由于这些注解是元注解，即使你违反了它们定义的规则你的项目也能编译通过。然而，违反规则的地方会被 Android Studio 和 Lint 高亮,这就意味着团队的其他成员会看到这些，而且在 CI 工具的输出中也能看到。</p>
+<h3 id="3-Fast-and-Painless-code-review"><a href="#3-Fast-and-Painless-code-review" class="headerlink" title="3 Fast and Painless code review"></a>3 Fast and Painless code review</h3><p>现在假设你是乐于做 code review 的。检查开发的功能是如何工作的是较为有意义的，因此你需要编译项目。这种情况下的常见工作流程如下：</p>
+<ol>
+<li>在当前分支 stash 变更</li>
+<li>切分支去 review 代码</li>
+<li>在 IDE 中重新同步 Gradle 配置</li>
+<li>在 IDE 中浏览代码</li>
+<li>编译运行，然后测试 app</li>
+<li>重复 1-5 的操作回到你的工作中去  </li>
+</ol>
+<p>你可能会说: “What’s the problem with it?” 。是的，这一切都很好。但是在你的项目有1000多个类而且有不同的构建配置时，即使是在高配的 Macbook 上,你可能花费3分钟甚至更多的时间去等待编译。  </p>
+<p>我们的解决方案是使用专用 IDE 实例和库文件夹进行代码审查。在这种情况下，你的工作不会被打断，而且你可以轻易地回到你的工作分支去。小小的免责声明:推荐使用内存 &gt;16G的机器，它能帮你节约的时间绝对是值得的。</p>
+<h3 id="4-Apply-changes-fast"><a href="#4-Apply-changes-fast" class="headerlink" title="4 Apply changes fast"></a>4 Apply changes fast</h3><p>即便是在小型的 Android 项目中，你都可能花费一部分时间去构建你最新的代码然后部署到测试机器或者虚拟机中。如果你有好几个类文件和布局文件的话，即使是在一个高配置的机器上，每一次的重新构建和重新部署都会花费你许多时间。而且你可能需要人工地进入你修改的页面，这也是很影响效率的。</p>
+<p>在2015年末，Android 社区得到了两个能够让改变的代码更快被应用的工具。第一个是 JRebel,它来自 Java 后端，并且已经成为行业标准有很长一段时间。另一个工具是 Google 团队跟 Android Studio 2.0 一起发布的 <a href="https://developer.android.com/studio/run/index.html#instant-run" target="_blank" rel="external">Instant Run</a>。这两个工具有着相通的目标，但是 JRebel 有更多的共能并且是付费的。</p>
+<p>我还没有发现这两个工具的独立比较，因此我根据他们的文档和博客声明分析并得出了一下表格。目前，它们中最常见的用例是改变资源和方法逻辑，而无需结构变化，如接口或 manifest 文件。</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/0*-btlhImjSPlQ37rQ.png" alt=""></p>
+<blockquote><p><strong>来源:</strong><br><a href="https://developer.android.com/studio/run/index.html#instant-run" target="_blank" rel="external">https://developer.android.com/studio/run/index.html#instant-run</a><br>Reto Meier: <a href="https://goo.gl/mEP7N5" target="_blank" rel="external">“Instant Run: How Does it Work?!”</a><br>Oleg Selajev: <a href="https://goo.gl/NvFHpN" target="_blank" rel="external">“Looking at JRebel for Android and Instant Run …”</a></p>
+</blockquote>
+<p>这些工具都还在活跃地开发中并且几乎每周都回发布更新。根据我们的经验，它们仍然还有很多的用例没有覆盖到，但是如果你知道这些工具的用途，你就可以从这些工具中受益。</p>
+<h3 id="5-Measure-execution-time"><a href="#5-Measure-execution-time" class="headerlink" title="5 Measure execution time"></a>5 Measure execution time</h3><p>在应用调试和性能分析中另一个非常有用的功能是纪录方法的输入/输出和执行时间。对于这些需求，我们使用了一个简单而优雅的方法注释工具——Jake Wharton 的 <a href="https://github.com/JakeWharton/hugo" target="_blank" rel="external">Hugo</a> 。如果你只是想看日志而不想用像 Systrace 这样深刻而复杂的工具,它就像一个充满魅力的作品。</p>
+<p>所有你需要做的只是注释目标方法,如图所示：</p>
+<pre class=" language-Java"><code class="language-Java">@DebugLog
+public String getName(String first, String last) {/* ... */}
+</code></pre>
+<p>并在日志中找到有关方法调用的相应信息：</p>
+<pre class=" language-Java"><code class="language-Java">V/Example: --> getName(first="Jake", last="Wharton")
+V/Example: <-- getName [16ms] = "Jake Wharton"
+</code></pre>
+<h3 id="6-How-to-read-logcat-output-from-your-device"><a href="#6-How-to-read-logcat-output-from-your-device" class="headerlink" title="6 How to read logcat output from your device"></a>6 How to read logcat output from your device</h3><p>对于日常需要，我们大部分人都使用 Android Studio 中的 Monitor来看日志。但是，它只适用于简单的情况，我们必须得注意到这种方法的几个权衡点:</p>
+<ul>
+<li>日志读起来很不友好，你可能需要使用外部工具或者命令进行格式化</li>
+<li>Android Studio 的日志工具连接到已经部署的应用程序的进程ID。如果你重新部署应用或者杀死进程的话，由于它是关联到进程ID的，之前的日志就会丢失。</li>
+</ul>
+<p>作为解决这个问题的方法，我们可以使用 Jake Wharton 的另一个工具——<a href="https://github.com/JakeWharton/pidcat" target="_blank" rel="external">pidcat</a>。它的主要优点是:</p>
+<ul>
+<li>良好的配色和格式</li>
+<li>通过包名而不是进程ID连接调试的应用程序。重新部署应用后,之前的日志仍然会保留。</li>
+</ul>
+<h3 id="7-Network-output-logging-and-analyzing"><a href="#7-Network-output-logging-and-analyzing" class="headerlink" title="7 Network output logging and analyzing"></a>7 Network output logging and analyzing</h3><p>读取网络交互日志的最常见的方法是使用你的 Http 客户端库的日志输出。但是这种方法存在一些权衡点:</p>
+<ul>
+<li>如果你在开发中保留所有的网络日志，你将会注意到，应用的性能下降，因为打印日志是需要耗时的。</li>
+<li>如果的应用中有一些外部库需要使用网络的话，你可能需要对这些库进行额外的配置更改，以强制记录所有数据。</li>
+<li>在QA阶段就不能够获取控制台的输出和具体的配置，因此你将没有办法在生产环境发布的应用中使用这样的方法来监控流量。</li>
+</ul>
+<p>这是其它一些方法:使用像<a href="https://www.charlesproxy.com/" target="_blank" rel="external">Charles Proxy</a>这样的Http监控和代理工具。这些工具可以提供一下功能，包装你的应用作为一个黑盒:</p>
+<ul>
+<li>Http/Https 流量监控和纪录</li>
+<li>重写数据并且覆盖服务端响应的边缘值</li>
+<li>在网络调用中设置断点</li>
+<li>通过在设备中安装 SSL 证书读取加密流量</li>
+</ul>
+<p>更新。Nahuel Barrios 在评论中提到，使用 Facebook 的 Stetho 也可以监控网络流量。它不允许你读取生产环境的流量，但是对于常规的日常开发可能是一个很好的解决方案。我还没有发现从谷歌Analytics使用 Stetho 读取 SSL 加密流量的方式，如果你知道些什么,请给我留言。</p>
+<h3 id="8-Keep-testing-on-various-OS-versions"><a href="#8-Keep-testing-on-various-OS-versions" class="headerlink" title="8 Keep testing on various OS versions"></a>8 Keep testing on various OS versions</h3><p>有一件事我自己一直在做，并且也推动我的同事做:在开发中对于每一个功能的测试都需覆盖到 Lollipop 或者更高的版本以及 Lollipop 版本之前的设备或者模拟器。这听起来可能像一个队长平淡无奇的提示，但是我在开发中经常捕获这些错误。</p>
+<p>通过这种方式你能发现的最常见的bug是触摸反馈和系统颜色问题。我们经常看到由于老API的兼容问题导致的App崩溃。</p>
+<h3 id="9-Automate-screen-interaction"><a href="#9-Automate-screen-interaction" class="headerlink" title="9 Automate screen interaction"></a>9 Automate screen interaction</h3><p><a href="https://medium.com/@sergii/best-practices-for-android-developer-productivity-cfd6ffba804c#.lgs95jbe9" target="_blank" rel="external">https://medium.com/@sergii/best-practices-for-android-developer-productivity-cfd6ffba804c#.lgs95jbe9</a></p>
+<p>Make your build.gradle great again<br><a href="https://medium.com/@sergii/make-your-build-gradle-great-again-c84cc172a654#.p7j09wyl3" target="_blank" rel="external">https://medium.com/@sergii/make-your-build-gradle-great-again-c84cc172a654#.p7j09wyl3</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 翻译 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android App Development </tag>
+            
+            <tag> AndroidDev </tag>
+            
+            <tag> Android Studio </tag>
+            
+            <tag> Gradle </tag>
+            
+            <tag> Developer Productivity </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[My New Post]]></title>
+      <url>http://yoursite.com/2017/03/15/My-New-Post/</url>
+      <content type="html"><![CDATA[<p>There is something changed.</p>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"lkq"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello,world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>|—node_modules<br>|—public<br>|—scffolds<br>|—source<br>| |—_post<br>| |—tags<br>|—themes<br>| |—material<br>| | |—_config.yml<br>|—_config.yml<br>|—package.json</p>
+]]></content>
+      
+        <categories>
+            
+            <category> DayOne </category>
+            
+            <category> haha </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> my </tag>
+            
+            <tag> your </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>http://yoursite.com/2017/03/15/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+  
+  
+</search>
