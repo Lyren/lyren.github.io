@@ -240,7 +240,7 @@
 
 <div class=" material-tagscloud">
     <div class="material-post mdl-grid">
-        <a href="/tags/Android-App-Development/" style="font-size: 16px; color: #757575">Android App Development</a> <a href="/tags/Android-Studio/" style="font-size: 16px; color: #757575">Android Studio</a> <a href="/tags/AndroidDev/" style="font-size: 16px; color: #757575">AndroidDev</a> <a href="/tags/Developer-Productivity/" style="font-size: 16px; color: #757575">Developer Productivity</a> <a href="/tags/Gradle/" style="font-size: 16px; color: #757575">Gradle</a> <a href="/tags/my/" style="font-size: 16px; color: #757575">my</a> <a href="/tags/your/" style="font-size: 16px; color: #757575">your</a>
+        <a href="/tags/Android-App-Development/" style="font-size: 16px; color: #757575">Android App Development</a> <a href="/tags/Android-Studio/" style="font-size: 16px; color: #757575">Android Studio</a> <a href="/tags/AndroidDev/" style="font-size: 16px; color: #757575">AndroidDev</a> <a href="/tags/Developer-Productivity/" style="font-size: 16px; color: #757575">Developer Productivity</a> <a href="/tags/Gradle/" style="font-size: 16px; color: #757575">Gradle</a>
     </div>
 </div>
 
@@ -339,7 +339,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -357,7 +357,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/DayOne/">DayOne<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/DayOne/haha/">haha<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/翻译/">翻译<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/翻译/">翻译<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -561,91 +561,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-
-
-    <!-- Leancloud -->
-    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-    <script>
-        AV.initialize('YkNK9JSxyVdfCuOK8a6Dxo6T-gzGzoHsz', 'toMzAsK3zF5naaFHXmb0QYoH');
-    </script>
-    <script>
-    function showTime(Counter) {
-        var query = new AV.Query(Counter);
-        $('.leancloud-views_num').each(function() {
-            var url = $(this).attr('id').trim();
-            query.equalTo('url', url);
-            query.find({
-                success: function(results) {
-                    if (results.length === 0) {
-                        var content = '0 ' + $(document.getElementById(url)).text();
-                        $(document.getElementById(url)).text(content);
-                        return;
-                    }
-                    for (var i = 0; i < results.length; i++) {
-                        var object = results[i];
-                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
-                        $(document.getElementById(url)).text(content);
-                    }
-                },
-                error: function(object, error) {
-                    console.log('Error: ' + error.code + ' ' + error.message);
-                }
-            });
-        });
-    }
-
-    function addCount(Counter) {
-      var Counter = AV.Object.extend('Counter');
-      url = $('.leancloud-views_num').attr('id').trim();
-      title = $('.leancloud-views_num').attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-      query.equalTo('url', url);
-      query.find({
-          success: function(results) {
-            if (results.length > 0) {
-                var counter = results[0];
-                counter.fetchWhenSave(true);
-                counter.increment('time');
-                counter.save(null, {
-                    success: function(counter) {
-                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
-                        $(document.getElementById(url)).text(content);
-                    },
-                    error: function(counter, error) {
-                        console.log('Failed to save Visitor num, with error message: ' + error.message);
-                    }
-                });
-            } else {
-              var newcounter = new Counter();
-              newcounter.set('title', title);
-              newcounter.set('url', url);
-              newcounter.set('time', 1);
-              newcounter.save(null, {
-                  success: function(newcounter) {
-                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
-                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
-                      $(document.getElementById(url)).text(content);
-                  },
-                  error: function(newcounter, error) {
-                      console.log('Failed to create');
-                  }
-              });
-            }
-        },
-        error: function(error) {
-            console.log('Error:' + error.code + ' ' + error.message);
-        }
-      });
-    }
-    $(function() {
-        var Counter = AV.Object.extend('Counter');
-        if ($('.leancloud-views_num').length === 1) {
-            addCount(Counter);
-        } else if ($('.post-title-link').length > 1) {
-            showTime(Counter);
-        }
-    });
-</script>
 
 
 
